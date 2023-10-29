@@ -1,19 +1,14 @@
 
-import { getCurrentlyPlaying } from '@/lib/spotify'
-import { formatTrackInfo } from '@/utils/helpers/format';
+import { getTrackInformation } from '@/lib/spotify'
+import { getMediaInformation } from '@/lib/tracktv'
 
 export async function GET() {
-  // SPOTIFY DATA
-  const currentlyPlaying = await getCurrentlyPlaying();
-  const isTrackPlaying = ( currentlyPlaying.status === 200 )
-  let trackInfo = {}
-
-  if ( isTrackPlaying ) {
-    trackInfo = await currentlyPlaying.json();
-  }
-
   const Updates = {
-    playing : isTrackPlaying ? formatTrackInfo(trackInfo) : '',
+    listening : await getTrackInformation(),
+    learning: "Ruby",
+    watchedMovie: await getMediaInformation('movies'),
+    watchedShow: await getMediaInformation('shows'),
+    playing: "League of Legends", // TODO: get dynamically
   }
 
   return Response.json( Updates );

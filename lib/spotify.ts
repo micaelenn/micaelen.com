@@ -1,3 +1,5 @@
+import { formatTrackInfo } from '@/utils/helpers/format';
+
 const getAccessToken = async () => {
   const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
 
@@ -24,4 +26,17 @@ export const getCurrentlyPlaying = async () => {
       Authorization: `Bearer ${access_token}`,
     },
   });
+}
+
+export const getTrackInformation = async () => {
+  const currentlyPlaying = await getCurrentlyPlaying();
+  const isTrackPlaying = ( currentlyPlaying.status === 200 )
+  
+  let trackInfo = {}
+
+  if ( isTrackPlaying ) {
+    trackInfo = await currentlyPlaying.json();
+  }
+
+  return isTrackPlaying ? formatTrackInfo(trackInfo) : ''
 }
