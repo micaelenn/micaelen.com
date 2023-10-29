@@ -2,17 +2,23 @@
 import React, { FC } from 'react';
 
 // internal dependencies
-import { Component } from './Header.styles'
+import { Component, Title } from './Header.styles'
+import { StatusProps } from '@/utils/types/StatusProps';
+import Updates from '@/components/Updates/Updates'
+import Social from '@/components/Social/Social'
+import LanguageSelector from '@/components/LanguageSelector/LanguageSelector';
 
 // types
 interface HeaderProps {
- 
+  updates: StatusProps;
+  title: string;
 }
 
-const Header: FC<HeaderProps> = ({}) => {
+const Header: FC<HeaderProps> = ({ updates, title }) => {  
   return (
     <Component>
-      <h1>Header</h1>
+      <Updates status={updates} />
+      <Title>{title}</Title>
     </Component>
 	);
 };
