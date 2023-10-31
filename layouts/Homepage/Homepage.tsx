@@ -19,7 +19,7 @@ const HomepageLayout: FC<HomepageLayoutProps> = ({ headerContent }) => {
     <Container>
       <Header 
         updates={headerContent} 
-        title={`Micaelen Miranda`}
+        title={`Micaelen`}
       />
       
       <Footer />

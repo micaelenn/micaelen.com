@@ -59,7 +59,7 @@ const Updates: FC<UpdatesProps> = ({ status }) => {
       <List className="updates">
         {status.listening &&
           <li className="is-visible">
-            {`🎵 Listening: ${status.listening}`}
+            {`🎶 Listening: ${status.listening}`}
           </li>
         }
         {status.learning && 
@@ -68,11 +68,11 @@ const Updates: FC<UpdatesProps> = ({ status }) => {
         {status.watchedMovie && 
           <li>{`🎬 Last Movie: ${status.watchedMovie}`}</li>
         }
-        {status.watchedShow &&
-          <li>{`📺 Last Show: ${status.watchedShow}`}</li>
+        {status.watching &&
+          <li>{`📺 Watching: ${status.watching}`}</li>
         }
         {status.playing && 
-          <li>{`🎮 Playing: ${status.playing}`}</li>
+          <li>{`🏹 Playing: ${status.playing}`}</li>
         }
       </List>
     </Component>

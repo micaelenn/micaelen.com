@@ -7,8 +7,8 @@ export async function GET() {
     listening : await getTrackInformation(),
     learning: "Ruby",
     watchedMovie: await getMediaInformation('movies'),
-    watchedShow: await getMediaInformation('shows'),
-    playing: "League of Legends", // TODO: get dynamically
+    watching: await getMediaInformation('shows'),
+    playing: "League of Legends",
   }
 
   return Response.json( Updates );

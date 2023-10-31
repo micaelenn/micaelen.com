@@ -2,6 +2,6 @@ export interface StatusProps {
     listening: string;
     learning: string;
     watchedMovie: string;
-    watchedShow: string;
+    watching: string;
     playing: string;
 }

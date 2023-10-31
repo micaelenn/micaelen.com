@@ -8,16 +8,33 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${colors.black};
-    color: ${colors.white};
+    font-family: ${fontFamilies.secondary}, sans-serif;
+    margin: 0 auto;
+    max-width: 1500px;
   }
 
   a {
-    text-decoration: none;
+    color: ${colors.black};
   }
 
   ul {
     list-style: none;
+  }
+
+  .container {
+    margin: 0 15px;
+
+    @media(min-width: ${medias.mediumLarge}) {
+      margin: 0 30px;
+    }
+  }
+
+  .flex-centralized {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
   }
 `
 

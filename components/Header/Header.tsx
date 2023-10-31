@@ -2,11 +2,10 @@
 import React, { FC } from 'react';
 
 // internal dependencies
-import { Component, Title } from './Header.styles'
+import { Component, Square, Title } from './Header.styles'
 import { StatusProps } from '@/utils/types/StatusProps';
 import Updates from '@/components/Updates/Updates'
 import Social from '@/components/Social/Social'
-import LanguageSelector from '@/components/LanguageSelector/LanguageSelector';
 
 // types
 interface HeaderProps {
@@ -16,9 +15,16 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ updates, title }) => {  
   return (
-    <Component>
+    <Component className="container">
       <Updates status={updates} />
-      <Title>{title}</Title>
+
+      <Title className="flex-centralized">
+        <Square>
+          <h1>{title}</h1>
+        </Square>
+      </Title>
+
+      <Social />
     </Component>
 	);
 };
