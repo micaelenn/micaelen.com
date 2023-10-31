@@ -22,10 +22,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .container {
-    margin: 0 15px;
+    margin-left: 20px;
+    margin-right: 20px;
 
     @media(min-width: ${medias.mediumLarge}) {
-      margin: 0 30px;
+      margin-left: 30px;
+      margin-right: 30px;
     }
   }
 

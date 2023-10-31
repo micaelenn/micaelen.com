@@ -1,10 +1,14 @@
 'use client'
 
 // internal dependencies
-import Header from '@/components/Header/Header'
-import Footer from '@/components/Footer/Footer'
 import GlobalStyles from '@/styles/globalStyles'
 import StyledComponentsRegistry from '@/lib/registry'
+
+// font-families
+import '@fontsource/courier-prime/400.css';
+import '@fontsource/courier-prime/700.css';
+import '@fontsource/coustard/400.css';
+
 
 export default function RootLayout({
   children,
@@ -21,9 +25,7 @@ export default function RootLayout({
         <body>
           <StyledComponentsRegistry>
            <GlobalStyles />
-            <Header />
             {children}
-            <Footer />
           </StyledComponentsRegistry>
         </body>
       </html>

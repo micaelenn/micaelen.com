@@ -13,7 +13,9 @@ export const Component = styled.header`
 `
 
 export const Square = styled.div`
-  border: 1px solid ${colors.black};
+  @media(min-width: ${medias.medium}) {
+    border: 1px solid ${colors.black};
+  }
 `
 
 export const Title = styled.div`
@@ -34,7 +36,7 @@ export const Title = styled.div`
       font-size: 20px;
       margin: 2px;
       padding: 5px;
-      width: 145px;
+      width: 225px;
     }
   }
 `

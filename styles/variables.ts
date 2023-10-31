@@ -1,10 +1,14 @@
 const colors = {
+  border: '#322d31',
   black: '#08080A',
-  white: '#FFF'
+  white: '#FFF',
+  dark: '#1d1d1d',
+  textDark: '#1d1d1d'
 }
 
 const fontFamilies = {
-  primary: '',
+  primary: 'Coustard',
+  secondary: 'Courier Prime',
 }
 
 const medias = {

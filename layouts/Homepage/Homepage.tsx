@@ -6,10 +6,12 @@ import React, { FC  } from 'react';
 // internal dependencies
 import { Container } from './Homepage.styles'
 import Header from '@/components/Header/Header'
+import ImageText from '@/components/ImageText/ImageText'
+import Separator from '@/components/Separator/Separator'
 import Footer from '@/components/Footer/Footer'
-import { StatusProps } from '@/utils/types/StatusProps';
 
 // types
+import { StatusProps } from '@/utils/types/StatusProps'
 interface HomepageLayoutProps {
   headerContent: StatusProps
 }
@@ -19,9 +21,13 @@ const HomepageLayout: FC<HomepageLayoutProps> = ({ headerContent }) => {
     <Container>
       <Header 
         updates={headerContent} 
-        title={`Micaelen`}
+        title={`Micaelen Miranda`}
       />
-      
+
+      <ImageText />
+
+      <Separator />
+
       <Footer />
     </Container>
 	);
