@@ -1,14 +1,11 @@
 // internal dependencies
 import HomepageLayout from "@/layouts/Homepage/Homepage";
+import { getHomepageData } from "@/lib/sanity/homepage";
 
 export default async function Home() {
-  // GET ACTIVITIES UPDATE
-  const response = await fetch(`${process.env.PUBLIC_URL}/api/updates`, {
-    cache: 'no-store'
-  });
-  const updates = await response.json()
-  
+  const homepageData = await getHomepageData()
+
   return (
-    <HomepageLayout headerContent={updates}/>
+    <HomepageLayout {...homepageData} />
   )
 }

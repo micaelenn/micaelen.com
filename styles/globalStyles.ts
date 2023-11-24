@@ -1,3 +1,5 @@
+"use client"
+
 import { createGlobalStyle } from 'styled-components'
 import { colors, fontFamilies, medias } from './variables'
 
@@ -27,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
   }
   
   p {
-    line-height: 1.3;
+    line-height: 1.5;
   }
 
   .container {

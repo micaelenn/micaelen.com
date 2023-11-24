@@ -65,14 +65,18 @@ const Updates: FC<UpdatesProps> = ({ status }) => {
         {status.learning && 
           <li>{`📖 Learning: ${status.learning}`}</li>
         }
-        {status.watchedMovie && 
-          <li>{`🎬 Last Movie: ${status.watchedMovie}`}</li>
-        }
         {status.watching &&
           <li>{`📺 Watching: ${status.watching}`}</li>
         }
+        {
+          status.location && 
+          <li>{`📍 ${status.location}`}</li>
+        }
+        {status.watchedMovie && 
+          <li>{`🎬 Last Movie: ${status.watchedMovie}`}</li>
+        }
         {status.playing && 
-          <li>{`🏹 Playing: ${status.playing}`}</li>
+          <li>{`🎮 Playing: ${status.playing}`}</li>
         }
       </List>
     </Component>

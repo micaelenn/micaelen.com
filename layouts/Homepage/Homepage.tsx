@@ -1,27 +1,19 @@
-'use client'
+"use client" 
 
 // external dependencies
 import React, { FC  } from 'react';
 
 // internal dependencies
 import { Container } from './Homepage.styles'
-import Header from '@/components/Header/Header'
 import Introduction from '@/components/Introduction/Introduction'
 
 // types
-import { StatusProps } from '@/utils/types/StatusProps'
-interface HomepageLayoutProps {
-  headerContent: StatusProps
-}
+interface HomepageLayoutProps {}
 
-const HomepageLayout: FC<HomepageLayoutProps> = ({ headerContent }) => {  
+const HomepageLayout: FC<HomepageLayoutProps> = ( data: any ) => {      
   return (
     <Container>
-      <Header 
-        updates={headerContent} 
-      />
-
-      <Introduction />
+      <Introduction content={data.introduction} />
     </Container>
 	);
 };
