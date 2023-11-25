@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontFamilies, medias } from '@/styles/variables'
+import { fontFamilies, medias } from '@/styles/variables'
 
 export const Component = styled.div``
 
@@ -17,6 +17,7 @@ export const List = styled.ul`
   
   li {
     display: none;
+    font-family: ${fontFamilies.secondary};
     font-size: 15px;
 
     @media(min-width: ${medias.mediumLarge}) {

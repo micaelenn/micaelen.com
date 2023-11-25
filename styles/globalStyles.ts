@@ -22,6 +22,17 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     color: ${colors.black};
+    background: linear-gradient(to right, ${colors.hover} 50%, transparent 50%);
+    background-size: 205% 100%;
+    background-position: right bottom;
+    font-weight: 500;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      background-position: left bottom;
+      transition: background 0.25s ease;
+    }
   }
 
   ul {

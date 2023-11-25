@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { medias } from '@/styles/variables'
+import { medias, fontFamilies } from '@/styles/variables'
 
 export const Component = styled.ul`
   display: flex;
@@ -24,5 +24,8 @@ export const Component = styled.ul`
       }
     }
     
+    a {
+      font-family: ${fontFamilies.secondary};
+    }
   }
 `

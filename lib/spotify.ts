@@ -22,6 +22,7 @@ export const getCurrentlyPlaying = async () => {
   const { access_token } = await getAccessToken();
 
   return fetch("https://api.spotify.com/v1/me/player/currently-playing", {
+    cache: 'no-store',
     headers: {
       Authorization: `Bearer ${access_token}`,
     },

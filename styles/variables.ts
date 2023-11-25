@@ -1,11 +1,13 @@
 const colors = {
-  black: '#363c41',
+  black: '#000',
+  dark: '#363c41',
   white: '#FAFAFA',
+  hover: '#AFC6D0'
 }
 
 const fontFamilies = {
-  primary: 'Courier Prime',
-  secondary: 'Quicksand Variable',
+  primary: 'Quicksand Variable',
+  secondary: 'Courier Prime',
 }
 
 const medias = {
