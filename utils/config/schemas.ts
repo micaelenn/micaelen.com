@@ -5,4 +5,4 @@ export const schemas = {
     til: 'tilSchema'
 }
 
-export const revalidate = 60
+export const revalidate = 10
