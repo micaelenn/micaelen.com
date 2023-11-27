@@ -1,5 +1,5 @@
 import { client } from '@/utils/config/client'
-import { schemas, revalidate } from '@/utils/config/schemas'
+import { schemas } from '@/utils/config/schemas'
 import { getTrackInformation } from '@/lib/spotify'
 import { getMediaInformation } from '@/lib/tracktv'
 
@@ -20,7 +20,7 @@ export const getUpdates = async () => {
         learning, 
         location,
         playing,
-    }`, { next: { revalidate } })
+    }`, { next: { revalidate: 10} })
 
     // dynamic updates
     const listening = await getTrackInformation()
@@ -43,7 +43,7 @@ export const getUpdates = async () => {
 export const getSocialMedias = async () => {
     const social = await client.fetch(`*[_type=="${schemas.general}"][0] {
         socialMedias
-    }`, { next: { revalidate } })
+    }`, { next: { revalidate: 10 } })
 
     return social
 }

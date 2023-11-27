@@ -1,11 +1,10 @@
 import { formatTrackInfo } from '@/utils/helpers/format';
-import { revalidate } from '@/utils/config/schemas';
 
 const getAccessToken = async () => {
   const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
 
   const response = await fetch("https://accounts.spotify.com/api/token", {
-    next: { revalidate },  
+    next: { revalidate: 10 },  
     method: "POST",
     headers: {
       Authorization: `Basic ${process.env.SPOTIFY_KEYS}`,
@@ -24,7 +23,7 @@ export const getCurrentlyPlaying = async () => {
   const { access_token } = await getAccessToken();
 
   return fetch("https://api.spotify.com/v1/me/player/currently-playing", {
-    next: { revalidate },
+    next: { revalidate: 10 },
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
