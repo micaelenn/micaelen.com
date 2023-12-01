@@ -4,7 +4,7 @@ import { getTrackInformation } from '@/lib/spotify'
 import { getMediaInformation } from '@/lib/tracktv'
 
 // GENERAL CONTENT
-export const getGeneralData = async () => {        
+export const getGeneralData = async () => {
     const data = await client.fetch(
         `*[_type == "${schemas.general}"][0] {
             socialMedias,
