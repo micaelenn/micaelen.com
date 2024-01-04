@@ -21,10 +21,31 @@ export const getTodayILearnedPage = async () => {
     return pageData
 }
 
+// TIL - POST CONTENT
+export const getTodayILearnedContent = async (slug: string) => {
+    const data = await client.fetch(
+        `*[_type=="${schemas.til}" && slug.current == '${slug}'][0] {
+            title,
+            content,
+            seo
+        }`
+    )
+
+    const post = {
+        seo: data.seo,
+        content: {
+            title: data.title,
+            info: data.content
+        }
+    }
+
+    return post
+}
+
 // TIL - POSTS
 export const getTodayILearnedPosts = async () => {
     const posts = await client.fetch(
-        `*[_type=="tilSchema"] {
+        `*[_type=="${schemas.til}"] {
             seo,
             title,
             slug,

@@ -13,7 +13,7 @@ interface SeparatorProps {
 const Separator: FC<SeparatorProps> = ({}) => {
   return (
     <Component>
-      <DotsThreeOutline size={32} weight="fill" />
+      <DotsThreeOutline size={28} weight="fill" />
     </Component>
 	);
 };

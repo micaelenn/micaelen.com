@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { medias, fontFamilies } from '@/styles/variables'
+import { colors, fontFamilies, medias } from '@/styles/variables'
 
 export const Component = styled.ul`
   display: flex;
@@ -8,17 +8,21 @@ export const Component = styled.ul`
   text-align: center;
   height: 50px;
 
-  li {
-    font-size: 15px;
+  @media(min-width: ${medias.extraLarge}) {
+    justify-content: end;
+    text-align: left;
+  }
 
-    &:nth-child(2) {
-      &:before,
-      &:after {
+  li {
+    font-size: 16px;
+
+    &:nth-child(1) {
+        &:after {
         content: '-';
         margin: 0 10px;
       }
     }
-    
+
     a {
       font-family: ${fontFamilies.secondary};
     }

@@ -10,6 +10,7 @@ export const Content = styled.div`
 
     h1 {
         color: ${colors.dark};
+        font-size: 30px;
         margin-bottom: 50px;
     }
 `

@@ -24,7 +24,7 @@ const Card: FC<CardProps> = ({ info }) => {
         {formatDateToEnGB(info._createdAt)}
       </time>
 
-      <Link href={info.slug.current}>
+      <Link href={`/til/${info.slug.current}`}>
         {info.title}
       </Link>
     </Component>

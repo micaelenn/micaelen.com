@@ -8,7 +8,8 @@ export const getGeneralData = async () => {
     const data = await client.fetch(
         `*[_type == "${schemas.general}"][0] {
             socialMedias,
-            updates
+            updates,
+            menu
         }`
     )
     
@@ -18,15 +19,20 @@ export const getGeneralData = async () => {
     const watching = await getMediaInformation('shows')
 
     const content = {
-        social: data.socialMedias,
-        updates: {
-            listening : listening,
-            learning: data.updates.learning,
-            watching: watching,
-            location: data.updates.location,
-            watchedMovie: watchedMovie,
-            playing: data.updates.playing   
+        header: {
+            menu: data.menu,
+            updates: {
+                listening : listening,
+                learning: data.updates.learning,
+                watching: watching,
+                location: data.updates.location,
+                watchedMovie: watchedMovie,
+                playing: data.updates.playing   
+            },
         },
+        footer: {
+            social: data.socialMedias,
+        }
     }
 
     return content
