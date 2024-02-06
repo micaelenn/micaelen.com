@@ -15,7 +15,7 @@ interface TodayILearnedLayoutProps {
 
 const TodayILearnedLayout: FC<TodayILearnedLayoutProps> = (data: any) => {  
   return (
-    <Container>
+    <Container className="container">
       <Heading 
         title={data.introduction.title} 
         description={data.introduction.description}

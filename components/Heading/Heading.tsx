@@ -13,7 +13,7 @@ interface HeadingProps {
 
 const Heading: FC<HeadingProps> = ({title, description}) => {
   return (
-    <Component className="container">
+    <Component>
       <Content>
         <h1>{title}</h1>
 

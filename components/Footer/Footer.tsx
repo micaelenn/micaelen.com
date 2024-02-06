@@ -15,7 +15,7 @@ interface FooterProps {
 
 const Footer: FC<FooterProps> = ({ content }) => {    
   return (
-    <Component>
+    <Component className="container">
       <Social social={content.social} />
     </Component>
 	)

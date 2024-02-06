@@ -12,7 +12,7 @@ interface HomepageLayoutProps {}
 
 const HomepageLayout: FC<HomepageLayoutProps> = ( data: any ) => {      
   return (
-    <Container>
+    <Container className="container">
       <Introduction content={data.introduction} />
     </Container>
 	);

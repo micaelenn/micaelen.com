@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import { colors, medias, fontFamilies } from '@/styles/variables'
 
 export const Component = styled.div`
+  img {
+    width: 20px;
+  }
+  
   ul {
     display: flex;
     justify-content: center;
@@ -9,7 +13,7 @@ export const Component = styled.div`
     height: 20px;
 
     li {
-      font-size: 16px;
+      font-size: 14px;
       
       a {
         font-family: ${fontFamilies.secondary};

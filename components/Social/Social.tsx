@@ -11,7 +11,7 @@ import { SocialProps } from './SocialProps'
 
 const Social: FC<SocialProps> = ({ social }) => {      
   return (
-    <Component className="container">
+    <Component>
       <ul>
       {social.medias.map((item, index) =>
         <li key={index}>

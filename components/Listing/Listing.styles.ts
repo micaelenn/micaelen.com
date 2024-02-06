@@ -6,5 +6,4 @@ export const Component = styled.section`
     gap: 45px;
     margin: 50px auto;
     max-width: 900px;
-    padding: 0 20px;
 `

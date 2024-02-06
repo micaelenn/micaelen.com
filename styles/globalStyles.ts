@@ -24,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${colors.white};
+    background-color: ${colors.alabaster};
     font-family: ${fontFamilies.primary}, sans-serif;
     margin: 0 auto;
     max-width: 1500px;
@@ -37,14 +37,13 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     color: ${colors.black};
-    background: linear-gradient(to right, ${colors.primary} 50%, transparent 50%);
+    background: linear-gradient(to right, ${colors.hover} 50%, transparent 50%);
     background-size: 205% 100%;
     background-position: right bottom;
     font-weight: 500;
     outline: none;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-position: left bottom;
       transition: background 0.25s ease;
     }
@@ -62,6 +61,7 @@ const GlobalStyles = createGlobalStyle`
   .container {
     max-width: 900px;
     margin: 0 auto;
+    padding: 0 20px;
   }
 `
 

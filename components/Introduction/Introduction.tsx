@@ -18,7 +18,7 @@ interface IntroductionProps {
 
 const Introduction: FC<IntroductionProps> = ({ content }) => {
   return (
-      <Component className="container">
+      <Component>
         <Content>
           <div>
             <Title>
