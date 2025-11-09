@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import { colors, fontFamilies, medias } from '@/styles/variables'
 
 export const Component = styled.div`
+  background-color: ${colors.alabaster};
+  position: fixed;
+  width: 100%;
+  bottom: 20px;
   display: flex;
   justify-content: center;
 

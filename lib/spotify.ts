@@ -1,4 +1,4 @@
-import { formatTrackInfo } from '@/utils/helpers/format';
+import { formatTrackInfo } from '@/utils/helpers/mappings';
 
 const getAccessToken = async () => {
   const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN

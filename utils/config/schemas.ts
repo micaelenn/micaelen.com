@@ -1,7 +1,6 @@
 // Declare the name of schemas from Sanity Studio
 export const schemas = {
-    homepage: 'homepageSchema',
+    homepage: 'homepage',
     general: 'generalSchema',
-    tilPage: 'tilListingSchema',
-    til: 'tilSchema'
+    notes: 'notes',
 }

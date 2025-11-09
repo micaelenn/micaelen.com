@@ -20,7 +20,7 @@ export const List = styled.ul`
     font-size: 15px;
 
     @media(min-width: ${medias.mediumLarge}) {
-      max-width: 520px;
+      max-width: 420px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

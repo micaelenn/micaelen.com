@@ -16,10 +16,10 @@ const Updates: FC<UpdatesProps> = ({ status }) => {
   const [visibleIndex, setVisibleIndex] = useState<number>(0)
 
   const statusItems: StatusItem[] = [
-    { key: 'listening', emoji: '🎶', label: 'Listening:' },
+    { key: 'listening', emoji: '🎶', label: '' },
     { key: 'learning', emoji: '📖', label: 'Learning:' },
     { key: 'watching', emoji: '📺', label: 'Watching:' },
-    { key: 'location', emoji: '📍', label: '' },
+    { key: 'location', emoji: '🌐', label: '' },
     { key: 'watchedMovie', emoji: '🎬', label: 'Last Movie:' },
     { key: 'playing', emoji: '🎮', label: 'Playing:' },
     { key: 'version', emoji: '👾', label: 'Version:' },

@@ -10,7 +10,7 @@ import Introduction from '@/components/Introduction/Introduction'
 // types
 interface HomepageLayoutProps {}
 
-const HomepageLayout: FC<HomepageLayoutProps> = ( data: any ) => {      
+const HomepageLayout: FC<HomepageLayoutProps> = ( data ) => {        
   return (
     <Container className="container">
       <Introduction content={data.introduction} />

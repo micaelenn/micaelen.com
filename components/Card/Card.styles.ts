@@ -6,11 +6,17 @@ export const Component = styled.div`
   position: relative;
 
   h2 {
-    color: ${colors.primary};
-    font-size: 20px;
+    color: ${colors.black};
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     transition: all 0.2s ease 0s;
+  }
+
+  p {
+    color: ${colors.dark};
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   a {
@@ -23,32 +29,31 @@ export const Component = styled.div`
 
   &:hover,
   &:focus {
-    h2 {
-      color: ${colors.dark};
+    h2, svg {
+      color: ${colors.primary};
     }
-  }
-`
-
-export const Info = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  p {
-    background-color: ${colors.light};
-    border-radius: 2px;
-    color: ${colors.dark};
-    display: inline-block;
-    font-family: ${fontFamilies.secondary};
-    font-size: 14px;
-    padding: 0 5px;
-    text-align: center;
   }
 
   time {
+    color: ${colors.dark};
     font-size: 14px;
+  };
+`
 
-    @media (min-width: ${medias.medium}) {
-      font-size: 16px;
-    }
+export const Title = styled.div`
+  display: flex;
+  gap: 10px;  
+
+  svg {
+    color: ${colors.gray};
+    height: 24px;
+    width: 24px;
   }
+`
+
+export const Topics = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
 `
