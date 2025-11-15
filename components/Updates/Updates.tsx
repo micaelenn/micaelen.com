@@ -17,7 +17,7 @@ const Updates: FC<UpdatesProps> = ({ status }) => {
 
   const statusItems: StatusItem[] = [
     { key: 'listening', emoji: '🎶', label: '' },
-    { key: 'learning', emoji: '📖', label: 'Learning:' },
+    { key: 'learning', emoji: '📚', label: 'Learning:' },
     { key: 'watching', emoji: '📺', label: 'Watching:' },
     { key: 'location', emoji: '🌐', label: '' },
     { key: 'watchedMovie', emoji: '🎬', label: 'Last Movie:' },

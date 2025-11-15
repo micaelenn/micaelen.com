@@ -17,11 +17,18 @@ export const Component = styled.header`
 
   a {
     text-decoration: none;
+  
+    &:hover {
+      h1, span {
+        color: ${colors.primary};
+        transition: 0.2s;
+      }
+    }
   }
 
   h1 {
     font-family: ${fontFamilies.primary};
-    font-size: 18px;
+    font-size: 16px;
   }
 `
 

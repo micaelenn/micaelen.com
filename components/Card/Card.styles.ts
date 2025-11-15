@@ -20,6 +20,7 @@ export const Component = styled.div`
   a {
     position: absolute;
     top: 0;
+    left: 0;
     height: 100%;
     opacity: 0;
     width: 100%;

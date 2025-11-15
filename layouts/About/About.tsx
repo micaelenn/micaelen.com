@@ -18,8 +18,6 @@ interface AboutLayoutProps {
 }
 
 const AboutLayout: FC<AboutLayoutProps> = ({ data }) => {
-  console.log(data)
-  
   return (
     <Container className="container portable-text">
       <PortableText

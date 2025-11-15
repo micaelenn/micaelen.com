@@ -5,8 +5,12 @@ export const Component = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   gap: 50px;
-  margin-bottom: 100px;
+
+  @media (min-width: ${medias.landscape}) {
+    flex-direction: row;
+  }
 
   a {  
     svg {
@@ -16,7 +20,7 @@ export const Component = styled.div`
     }
 
     p {
-      font-weight: 600;
+      font-weight: 500;
     }
   }
 `

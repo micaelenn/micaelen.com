@@ -12,17 +12,7 @@ export const Component = styled.div`
 
   a {
     color: ${colors.black};
-  } 
-
-  .current {
-    .icon {
-      background-color: ${colors.primary};
-      display: flex;
-      padding: 2px;
-    }
-  }
-
-  svg {
+    display: block;
     transform: translateY(0); 
     transition: transform 0.3s ease-out; 
     height: 24px;
@@ -33,6 +23,25 @@ export const Component = styled.div`
     &:focus-within {
       transform: translateY(-4px);
     }
+  } 
+
+  .current {
+    .icon {
+      background-color: ${colors.primary};
+      display: flex;
+      padding: 2px;
+
+      &:hover, 
+      &:focus,
+      &:focus-within {
+        transform: translateY(0); 
+      } 
+    }
+  }
+
+  svg {
+    height: 24px;
+    width: 24px;
   }
 
   ul {
