@@ -1,7 +1,9 @@
-export function formatTrackInfo(info: any) { // TODO: review typing
+import { TrackProps } from "@/utils/types/TrackProps"
+
+export function formatTrackInfo(info: TrackProps) {
   const track = {
-    name: info.item.name,
-    artist: info.item.artists[0].name
+    name: info.name,
+    artist: info.artists[0].name
   }
 
   return `${track.name} - ${track.artist}`

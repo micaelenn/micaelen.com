@@ -15,7 +15,7 @@ export const getGeneralData = async () => {
     )
 
     // dynamic updates
-    const updates = data.updates[0]
+    const updates = data.updates
     const listening = await getTrackInformation()
     const watchedMovie = await getMediaInformation('movies')
     const watching = await getMediaInformation('shows')
