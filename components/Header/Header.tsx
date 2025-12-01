@@ -25,8 +25,7 @@ const Header: FC<HeaderProps> = ({ content }) => {
   const pageName = formatPath(getMainPath(pathname))
 
   return (
-    <Component className="container">
-      
+    <Component>
       {pathname === '/' ? 
         <Link href={'/'}>
           <h1>{content.title}</h1>

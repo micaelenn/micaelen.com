@@ -23,7 +23,7 @@ const Menu: FC<MenuProps> = ({ menu }) => {
       <ul>
         {menu.map((item, index) =>
           <li key={index} className={getMainPath(pathname) === item.url ? 'current' : ''}>
-            <Link className="icon" href={item.url}>
+            <Link className="icon" href={item.url}  aria-label={item.name}>
               <div dangerouslySetInnerHTML={{ __html: item.icon }} />
               <span>{item.name}</span>
             </Link>
