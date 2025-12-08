@@ -2,7 +2,6 @@
   <img width="70" height="70" alt="image" src="https://github.com/user-attachments/assets/8bb86be1-0b61-49b8-a5e0-a3a2a0460554" />
 </div>
 
-
 # My Personal Website
 
 ## Requirements
@@ -12,7 +11,6 @@
 ## Technologies
 - [TypeScript](https://www.typescriptlang.org/)
 - [NextJS](https://nextjs.org/)
-- [Sanity](https://www.sanity.io/)
 
 ## Getting Started
 

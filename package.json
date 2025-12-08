@@ -1,0 +1,29 @@
+{
+  "name": "micaelen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micaelenn/micaelen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micaelenn/micaelen/issues"
+  },
+  "homepage": "https://github.com/micaelenn/micaelen#readme",
+  "devDependencies": {
+    "turbo": "^2.6.3"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "packageManager": "npm@9.8.1"
+}
