@@ -2,12 +2,10 @@ export const dynamic = 'force-dynamic'
 
 // internal dependencies
 import {{ pascalCase elementName }}Layout from "@/layouts/{{ pascalCase elementName }}/{{ pascalCase elementName }}";
-import { get{{ pascalCase elementName }}Data } from "@/lib/sanity/{{ kebabCase elementName }}";
-import { getSeo } from "@/lib/sanity/seo"
+import { defaultGETRequest } from "@/utils/helpers/fetch";
+import { Endpoints } from "@/utils/config/endpoints";
 
 export async function generateMetadata() {
-  const seo = await getSeo('{{ lowerCase elementName }}')
-
   return {
     title: seo.title,
     description: seo.description
@@ -15,7 +13,7 @@ export async function generateMetadata() {
 }
 
 export default async function {{ pascalCase elementName }}() {
-  const {{ camelCase elementName }}Data = await get{{ pascalCase elementName }}Data()
+  const {{ camelCase elementName }}Data = await defaultGETRequest({{ camelCase elementName }});
 
   return (
     <{{pascalCase elementName}}Layout {...{{ camelCase elementName }}Data} />

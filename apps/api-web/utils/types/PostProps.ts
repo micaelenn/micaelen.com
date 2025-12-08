@@ -1,9 +1,7 @@
 export interface PostProps {
   title: string;
-  slug: string;
-  thumbnail: string;
-  createdAt: string;
+  slug: { current: string };
   excerpt: string;
-  content: [];
   topics: [];
+  _createdAt: string;
 }

@@ -1,18 +1,20 @@
 // external dependencies
-import { getNoteData } from '@/lib/sanity/note'
-import NoteLayout from '@/layouts/Note/Note'
-import { getNoteSeo } from '@/lib/sanity/notes'
+import NoteLayout from "@/layouts/Note/Note";
+import { defaultGETRequest } from "@/utils/helpers/fetch";
+import { Endpoints } from "@/utils/config/endpoints";
 
-export async function generateMetadata() {  
-  const seo = await getNoteSeo()
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const noteEndpoint = `${Endpoints.notes}/${params.slug}`;
+  const noteData = await defaultGETRequest(noteEndpoint);
 
   return {
-    title: `${seo.title} | Micaelen Miranda`,
-    description: seo.excerpt,
-  }
+    title: `${noteData.content.title} | Micaelen Miranda`,
+    description: noteData.content.excerpt,
+  };
 }
 
 export default async function Note({ params }: { params: { slug: string } }) {
-  const noteData = await getNoteData(params.slug)
-  return <NoteLayout data={noteData} />
+  const noteEndpoint = `${Endpoints.notes}/${params.slug}`;
+  const noteData = await defaultGETRequest(noteEndpoint);
+  return <NoteLayout data={noteData.content} />;
 }

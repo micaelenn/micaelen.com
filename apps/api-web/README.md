@@ -3,7 +3,9 @@
 A simple API designed to demonstrate **Backend for Frontend (BFF)** principles by orchestrating and integrating three different services for a personal website.
 This project serves as a practical example of how a BFF layer can centralize business logic, reduce frontend complexity, and provide a tailored API interface optimized for a specific client application.
 
-![alt text](image.png)
+<div align="center">
+  <img src="./doc/image.png" alt="Api Web diagram"/>
+</div>
 
 ## Usage
 
@@ -11,11 +13,14 @@ This project serves as a practical example of how a BFF layer can centralize bus
 # install via npm
 npm install
 
-# production build
-npm run build
+# generate .env with variable names
+lazyenv
 
 # development mode
 npm run dev
+
+# production build
+npm run build
 ```
 
 ## Development Tool
@@ -30,4 +35,4 @@ $ npm install -g plop
 
 **2. Generate structure**
 
-Run the `plop` command at the root of the directory and enter the name of the entity.
+Run the `plop` command at the root of the directory and enter the name of the new endpoint.

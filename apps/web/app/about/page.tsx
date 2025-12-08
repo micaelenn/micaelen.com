@@ -1,20 +1,18 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 // internal dependencies
 import AboutLayout from "@/layouts/About/About";
-import { getAboutData } from "@/lib/sanity/about";
+import { defaultGETRequest } from "@/utils/helpers/fetch";
+import { Endpoints } from "@/utils/config/endpoints";
 
 export async function generateMetadata() {
   return {
-    title: 'About | Micaelen Miranda',
-    description: ''
-  }
+    title: "About | Micaelen Miranda",
+    description: "",
+  };
 }
 
 export default async function About() {
-  const aboutData = await getAboutData()
-
-  return (
-    <AboutLayout data={aboutData} />
-  )
+  const aboutData = await defaultGETRequest(Endpoints.about);
+  return <AboutLayout data={aboutData.content} />;
 }

@@ -10,7 +10,7 @@ export async function authorizedGETRequest(endpoint: string, accessToken: string
   return { status, data };
 }
 
-export async function defaultGETRquest(endpoint: string) {
+export async function defaultGETRequest(endpoint: string) {
   const response = await fetch(endpoint);
   const status = response.status;
   const data = status !== 204 ? await response.json() : null;

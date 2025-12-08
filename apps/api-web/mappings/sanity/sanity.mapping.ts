@@ -1,5 +1,8 @@
 import { client } from "@/config/client";
 import { schemas } from "@/utils/helpers/schemas";
+import { formatDateToEnGB } from "@/utils/helpers/string";
+import { getImageURL } from "@/utils/helpers/assets";
+import { PostProps } from "@/utils/types/PostProps";
 
 class SanityMapping {
   async getMetadata() {
@@ -22,44 +25,75 @@ class SanityMapping {
 				title,
 				stack,
 				description,
-				seo
+				seo {
+					title
+				}
 			}`
+    );
+  };
+
+  getAboutData = async () => {
+    return await client.fetch(
+      `*[_type == "${schemas.about}"][0] {
+					title,
+					description
+       }`
     );
   };
 
   getNotesData = async () => {
-    return await client.fetch(
+    const query = await client.fetch(
       `*[_type == "${schemas.notes}"] {
-				title,
-				thumbnail,
-				excerpt,
-				content,
-				topics,
-				"slug": "/notes/" + slug.current,
-				"createdAt": _createdAt,
-			}`
+        title,
+        slug,
+        excerpt,
+        topics,
+        _createdAt,
+      }`
     );
+
+    const posts = query.map((post: PostProps) => ({
+      title: post.title,
+      slug: `/notes/${post.slug?.current ?? ""}`,
+      excerpt: post.excerpt,
+      topics: post.topics,
+      createdAt: formatDateToEnGB(post._createdAt),
+    }));
+
+    return posts;
   };
 
   getNoteData = async (slug: string) => {
-    return await client.fetch(
+    const query = await client.fetch(
       `*[_type == "${schemas.notes}" && slug.current == '${slug}'][0] {
 				title,
 				slug,
 				thumbnail,
 				excerpt,
 				content,
-				topics,
-				"createdAt": _createdAt,
+				_createdAt,
 			}`
     );
+
+    return {
+      title: query.title,
+      slug: `/notes/${query.slug?.current ?? ""}`,
+      thumbnail: getImageURL(query.thumbnail),
+      excerpt: query.excerpt,
+      createdAt: formatDateToEnGB(query._createdAt),
+      content: query.content,
+    };
   };
 
   getSocialsData = async () => {
     return await client.fetch(
       `*[_type == "${schemas.socials}"][0] {
 				title,
-				socialMedias
+				socialMedias[] {
+					icon,
+					name,
+					url
+				}
 			}`
     );
   };
