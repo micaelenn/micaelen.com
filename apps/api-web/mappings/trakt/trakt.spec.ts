@@ -1,7 +1,8 @@
-import { trakt } from "./trakt.mapping";
 import { App } from "@/configs/application";
 import { Endpoints } from "@/configs/endpoints";
 import { setHardcodedKeyPatterns } from "@/utils/helpers/string";
+import { getFunctionSource } from "@/utils/helpers/specs";
+import { trakt } from "./trakt.mapping";
 
 global.fetch = jest.fn();
 
@@ -9,10 +10,6 @@ describe("TraktMapping", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-
-  const getFunctionSource = (fn: Function): string => {
-    return fn.toString();
-  };
 
   // trakt.getLastWatched()
   describe("getLastWatched", () => {
@@ -23,8 +20,8 @@ describe("TraktMapping", () => {
       });
     });
 
-    // teste correct endpoint
-    it("It should use the correct endpoint URL", async () => {
+    // test correct endpoint
+    it("should use the correct endpoint URL", async () => {
       const type = "movies";
       const expectedUrl = `${Endpoints.traktHistory}${type}`;
       await trakt.getLastWatched(type);

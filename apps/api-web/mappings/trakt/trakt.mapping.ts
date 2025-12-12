@@ -1,8 +1,7 @@
 import { App } from "@/configs/application";
+import { Endpoints } from "@/configs/endpoints";
 
 class TraktMapping {
-  static historyEndpoint = "https://api.trakt.tv/users/micaelennn/history?type=";
-
   getMediaData = async (type: string) => {
     const media = await this.getLastWatched(type);
     const latestMovie = media[0].movie;
@@ -20,7 +19,7 @@ class TraktMapping {
   };
 
   getLastWatched = async (type: string) => {
-    const response = await fetch(`${TraktMapping.historyEndpoint}${type}`, {
+    const response = await fetch(`${Endpoints.traktHistory}${type}`, {
       headers: {
         "Content-Type": "application/json",
         "trakt-api-version": "2",

@@ -1,168 +1,72 @@
-import { sanity } from "./sanity.mapping";
+import { Endpoints } from "@/configs/endpoints";
 import { client } from "@/configs/client";
-import { getImageURL } from "@/utils/helpers/assets";
-import { formatDateToEnGB } from "@/utils/helpers/string";
+import { spotify } from "@/mappings/spotify/spotify.mapping";
+import { authorizedGETRequest } from "@/utils/helpers/fetch";
+import { getFunctionSource } from "@/utils/helpers/specs";
 
-jest.mock("@/configs/client", () => ({
-  client: { fetch: jest.fn() },
-}));
-
-jest.mock("@/utils/helpers/string", () => ({
-  formatDateToEnGB: jest.fn(() => "formatted-date"),
-}));
-
-jest.mock("@/utils/helpers/assets", () => ({
-  getImageURL: jest.fn(() => "mocked-image-url"),
+jest.mock("@/utils/helpers/fetch", () => ({
+  authorizedGETRequest: jest.fn(),
 }));
 
 const mockedFetch = client.fetch as jest.Mock;
+global.fetch = jest.fn();
 
-beforeEach(() => {
-  mockedFetch.mockReset();
-});
-
-describe("getMetadata", () => {
-  it("should return metadata data correctly", async () => {
-    const mockData = {
-      title: "Personal Website",
-
-      updates: ["learning", "playing"],
-
-      menu: [
-        { icon: "<svg></svg>", name: "Home", url: "/" },
-
-        { icon: "<svg></svg>", name: "About", url: "/about" },
-      ],
-    };
-
-    mockedFetch.mockResolvedValue(mockData);
-
-    const result = await sanity.getMetadata();
-
-    expect(result).toEqual(mockData);
+describe("SpotifyMapping", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
-});
 
-describe("getHomepageData", () => {
-  it("should return homepage data correctly", async () => {
-    const mockData = {
-      title: "Homepage Title",
-
-      stack: ["React", "Node"],
-
-      description: "Welcome!",
-    };
-
-    mockedFetch.mockResolvedValue(mockData);
-
-    const result = await sanity.getHomepageData();
-
-    expect(result).toEqual(mockData);
-  });
-});
-
-describe("getAboutData", () => {
-  it("should return about data correctly", async () => {
-    const mockData = {
-      title: "About",
-
-      description: "Lorem ipsum",
-    };
-
-    mockedFetch.mockResolvedValue(mockData);
-
-    const result = await sanity.getAboutData();
-
-    expect(result).toEqual(mockData);
-  });
-});
-
-describe("getNotesData", () => {
-  it("should format notes correctly", async () => {
-    mockedFetch.mockResolvedValue([
-      {
-        title: "Hello World",
-
-        slug: { current: "hello-world" },
-
-        excerpt: "Some text",
-
-        topics: ["Typescript", "Node"],
-
-        _createdAt: "2024-01-01",
-      },
-    ]);
-
-    const result = await sanity.getNotesData();
-
-    expect(result).toEqual([
-      {
-        title: "Hello World",
-
-        slug: "/notes/hello-world",
-
-        excerpt: "Some text",
-
-        topics: ["Typescript", "Node"],
-
-        createdAt: "formatted-date",
-      },
-    ]);
-
-    expect(formatDateToEnGB).toHaveBeenCalledWith("2024-01-01");
-  });
-});
-
-describe("getNoteData", () => {
-  it("should return a formatted note", async () => {
-    mockedFetch.mockResolvedValue({
-      title: "My Note",
-
-      slug: { current: "my-note" },
-
-      thumbnail: { asset: "my-asset" },
-
-      excerpt: "Some excerpt",
-
-      content: [{ type: "block" }],
-
-      _createdAt: "2024-01-01",
+  // spotify.getAccessToken()
+  describe("getAccessToken", () => {
+    beforeEach(() => {
+      (global.fetch as jest.Mock).mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ access_token: "mock_token" }),
+      });
     });
 
-    const result = await sanity.getNoteData("my-note");
-
-    expect(result).toEqual({
-      title: "My Note",
-
-      slug: "/notes/my-note",
-
-      thumbnail: "mocked-image-url",
-
-      excerpt: "Some excerpt",
-
-      createdAt: "formatted-date",
-
-      content: [{ type: "block" }],
+    // test correct endpoint, method and content type
+    it("should use the correct endpoint, method and content type", async () => {
+      const expectedUrl = `${Endpoints.spotify.token}`;
+      await spotify.getAccessToken();
+      const [url, options] = (global.fetch as jest.Mock).mock.calls[0];
+      const headers = options.headers;
+      const method = options.method;
+      expect(global.fetch).toHaveBeenCalledTimes(1);
+      expect(url).toBe(expectedUrl);
+      expect(method).toBe("POST");
+      expect(headers["Content-Type"]).toBe("application/x-www-form-urlencoded");
     });
 
-    expect(getImageURL).toHaveBeenCalled();
-
-    expect(formatDateToEnGB).toHaveBeenCalledWith("2024-01-01");
+    // test if private keys are exposed
+    it("should ensure Authorization and refresh_token use .env variables and are not hardcoded", async () => {
+      const functionSource = getFunctionSource(spotify.getAccessToken);
+      const usesAppSpotifyKeys = functionSource.includes("App.spotifyKeys");
+      const usesAppRefreshToken = functionSource.includes("App.spotifyRefreshTokens");
+      expect(usesAppSpotifyKeys).toBe(true);
+      expect(usesAppRefreshToken).toBe(true);
+    });
   });
-});
 
-describe("getSocialsData", () => {
-  it("should return socials data correctly", async () => {
-    const mockData = {
-      title: "Socials",
+  // spotify.getTrackData()
+  describe("getTrackData", () => {
+    it("should return a string in 'song - artist' format", async () => {
+      const mockAccessToken = "mock_token";
+      jest.spyOn(spotify, "getAccessToken").mockResolvedValue(mockAccessToken);
 
-      socialMedias: [{ icon: "<svg></svg>", name: "GitHub", url: "https://github.com" }],
-    };
+      (authorizedGETRequest as unknown as jest.Mock).mockResolvedValueOnce({
+        status: 200,
+        data: {
+          item: {
+            name: "Bohemian Rhapsody",
+            artists: [{ name: "Queen" }],
+          },
+        },
+      });
 
-    mockedFetch.mockResolvedValue(mockData);
-
-    const result = await sanity.getSocialsData();
-
-    expect(result).toEqual(mockData);
+      const result = await spotify.getTrackData();
+      expect(typeof result).toBe("string");
+      expect(result).toMatch(/^.+ - .+$/);
+    });
   });
 });

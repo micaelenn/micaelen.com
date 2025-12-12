@@ -1,16 +1,13 @@
 // internal modules
-import { App } from "configs/application";
+import { App } from "@/configs/application";
+import { Endpoints } from "@/configs/endpoints";
 import { authorizedGETRequest } from "@/utils/helpers/fetch";
 import { formatTrackInfo } from "@/utils/helpers/string";
 
 class SpotifyMapping {
-  static tokenEndpoint = "https://accounts.spotify.com/api/token";
-  static playingEndpoint = "https://api.spotify.com/v1/me/player/currently-playing";
-  static topTrackEndpoint = "https://api.spotify.com/v1/me/top/tracks?limit=1&time_range=short_term";
-
   getTrackData = async () => {
     const accessToken = await this.getAccessToken();
-    const currentlyPlaying = await authorizedGETRequest(SpotifyMapping.playingEndpoint, accessToken);
+    const currentlyPlaying = await authorizedGETRequest(Endpoints.spotify.playing, accessToken);
     const isTrackPlaying = currentlyPlaying.status === 200;
 
     let trackInfo;
@@ -18,7 +15,7 @@ class SpotifyMapping {
     if (isTrackPlaying) {
       trackInfo = currentlyPlaying.data.item;
     } else {
-      const latestTopTrack = await authorizedGETRequest(SpotifyMapping.topTrackEndpoint, accessToken);
+      const latestTopTrack = await authorizedGETRequest(Endpoints.spotify.topTrack, accessToken);
       trackInfo = latestTopTrack.data.items[0];
     }
 
@@ -26,7 +23,7 @@ class SpotifyMapping {
   };
 
   getAccessToken = async () => {
-    const response = await fetch(SpotifyMapping.tokenEndpoint, {
+    const response = await fetch(Endpoints.spotify.token, {
       method: "POST",
       headers: {
         Authorization: `Basic ${App.spotifyKeys}`,
