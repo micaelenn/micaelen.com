@@ -2,11 +2,11 @@
   "folders": [
     {
       "name": "Api-Web",
-      "path": "/apps/api-web"
+      "path": "./apps/api-web"
     },
     {
       "name": "Web",
-      "path": "/apps/web"
+      "path": "./apps/web"
     }
   ],
 

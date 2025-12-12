@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config({ path: ".env" });
+dotenv.config({ path: ".env", quiet: true });
 
 export class App {
   static port: string | undefined = process.env.PORT;

@@ -1,4 +1,4 @@
-import { client } from "@/config/client";
+import { client } from "@/configs/client";
 import { schemas } from "@/utils/helpers/schemas";
 import { formatDateToEnGB } from "@/utils/helpers/string";
 import { getImageURL } from "@/utils/helpers/assets";

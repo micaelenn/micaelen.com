@@ -16,7 +16,7 @@
     "outDir": "build",
     "baseUrl": ".",
     "paths": {
-      "@/config/*": ["configs/*"],
+      "@/configs/*": ["configs/*"],
       "@/controllers/*": ["./controllers/*"],
       "@/mappings/*": ["./mappings/*"],
       "@/utils/*": ["./utils/*"]

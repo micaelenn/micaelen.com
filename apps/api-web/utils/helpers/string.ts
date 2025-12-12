@@ -19,3 +19,11 @@ export function formatDateToEnGB(date: string) {
 
   return formattedDate;
 }
+
+export function setHardcodedKeyPatterns(keyName: string) {
+  return [
+    new RegExp(`"${keyName}":\\s*["'\`][a-zA-Z0-9]{20,}["'\`]`),
+    new RegExp(`'${keyName}':\\s*["'\`][a-zA-Z0-9]{20,}["'\`]`),
+    new RegExp(`\`${keyName}\`:\\s*["'\`][a-zA-Z0-9]{20,}["'\`]`),
+  ];
+}

@@ -1,4 +1,4 @@
-import { App } from "configs/application";
+import { App } from "@/configs/application";
 
 class TraktMapping {
   static historyEndpoint = "https://api.trakt.tv/users/micaelennn/history?type=";
