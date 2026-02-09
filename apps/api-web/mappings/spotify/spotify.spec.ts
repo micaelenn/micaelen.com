@@ -41,8 +41,8 @@ describe("SpotifyMapping", () => {
     // test if private keys are exposed
     it("should ensure Authorization and refresh_token use .env variables and are not hardcoded", async () => {
       const functionSource = getFunctionSource(spotify.getAccessToken);
-      const usesAppSpotifyKeys = functionSource.includes("App.spotifyKeys");
-      const usesAppRefreshToken = functionSource.includes("App.spotifyRefreshTokens");
+      const usesAppSpotifyKeys = functionSource.includes("App.variables.spotifyKeys");
+      const usesAppRefreshToken = functionSource.includes("App.variables.spotifyRefreshTokens");
       expect(usesAppSpotifyKeys).toBe(true);
       expect(usesAppRefreshToken).toBe(true);
     });

@@ -23,7 +23,7 @@ class TraktMapping {
       headers: {
         "Content-Type": "application/json",
         "trakt-api-version": "2",
-        "trakt-api-key": `${App.traktClientID}`,
+        "trakt-api-key": `${App.variables.traktClientID}`,
       },
     });
 

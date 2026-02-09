@@ -1,13 +1,16 @@
 import dotenv from "dotenv";
+import { fromEnv } from "@/utils/helpers/env";
 dotenv.config({ path: ".env", quiet: true });
 
 export class App {
-  static port: string | undefined = process.env.PORT;
-  static spotifyKeys: string | undefined = process.env.SPOTIFY_KEYS;
-  static spotifyRefreshTokens: string | undefined = process.env.SPOTIFY_REFRESH_TOKEN;
-  static traktClientID: string | undefined = process.env.TRAKT_CLIENT_ID;
-  static sanityProjectdID: string | undefined = process.env.SANITY_PROJECT_ID;
-  static sanityDataset: string | undefined = process.env.SANITY_DATASET;
+  static variables = {
+    port: fromEnv('PORT'),
+    spotifyKeys: fromEnv('SPOTIFY_KEYS'),
+    spotifyRefreshTokens: fromEnv('SPOTIFY_REFRESH_TOKEN'),
+    traktClientID: fromEnv('TRAKT_CLIENT_ID'),
+    sanityProjectdID: fromEnv('SANITY_PROJECT_ID'),
+    sanityDataset: fromEnv('SANITY_DATASET'),
+  }
 }
 
 export const setEndpoint = (endpoint: string) => {

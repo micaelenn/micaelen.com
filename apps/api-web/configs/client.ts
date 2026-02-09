@@ -1,8 +1,9 @@
 import { createClient } from "@sanity/client";
 import { App } from "./application";
 
-const projectId = App.sanityProjectdID;
-const dataset = App.sanityDataset;
+const { sanityProjectdID, sanityDataset } = App.variables
+const projectId = sanityProjectdID;
+const dataset = sanityDataset;
 const apiVersion = "2023-05-03";
 
 export const client = createClient({

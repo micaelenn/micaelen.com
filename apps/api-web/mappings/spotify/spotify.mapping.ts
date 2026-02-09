@@ -26,12 +26,12 @@ class SpotifyMapping {
     const response = await fetch(Endpoints.spotify.token, {
       method: "POST",
       headers: {
-        Authorization: `Basic ${App.spotifyKeys}`,
+        Authorization: `Basic ${App.variables.spotifyKeys}`,
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: new URLSearchParams({
         grant_type: "refresh_token",
-        refresh_token: App.spotifyRefreshTokens ?? "",
+        refresh_token: App.variables.spotifyRefreshTokens ?? "",
       }),
     });
 

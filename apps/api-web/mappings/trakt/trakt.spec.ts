@@ -11,6 +11,8 @@ describe("TraktMapping", () => {
     jest.clearAllMocks();
   });
 
+  const traktClientID = App.variables.traktClientID
+
   // trakt.getLastWatched()
   describe("getLastWatched", () => {
     beforeEach(() => {
@@ -51,15 +53,15 @@ describe("TraktMapping", () => {
       const functionSource = getFunctionSource(trakt.getLastWatched);
       const hardcodedKeyPatterns = setHardcodedKeyPatterns("trakt-api-key");
       expect(hardcodedKeyPatterns.some((pattern) => pattern.test(functionSource))).toBe(false);
-      const usesAppVariable = functionSource.includes("App.traktClientID");
+      const usesAppVariable = functionSource.includes("App.variables.traktClientID");
       expect(usesAppVariable).toBe(true);
       await trakt.getLastWatched(type);
       const [, options] = (global.fetch as jest.Mock).mock.calls[0];
       const apiKey = options.headers["trakt-api-key"];
-      expect(apiKey).toBe(App.traktClientID);
-      expect(App.traktClientID).toBeDefined();
-      expect(typeof App.traktClientID).toBe("string");
-      expect(App.traktClientID?.length).toBeGreaterThan(0);
+      expect(apiKey).toBe(traktClientID);
+      expect(traktClientID).toBeDefined();
+      expect(typeof traktClientID).toBe("string");
+      expect(traktClientID?.length).toBeGreaterThan(0);
     });
   });
 
