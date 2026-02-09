@@ -10,7 +10,7 @@ export function formatDateToEnGB(date: string) {
 }
 
 export function getMainPath(pathname: string) {
-  return `/${pathname.split('/')[1]}` 
+  return `/${pathname.split('/')[1]}`
 }
 
 export function formatPath(pathname: string) {

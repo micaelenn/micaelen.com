@@ -8,20 +8,20 @@ module.exports = function (plop) {
             choices: [
                 { name: 'component', value: 'component' },
                 { name: 'layout', value: 'layout' },
-               ],
-            },
-            {
-                type: 'input',
-                name: 'elementName',
-                message: 'Insert the name:',
-            },
+            ],
+        },
+        {
+            type: 'input',
+            name: 'elementName',
+            message: 'Insert the name:',
+        },
         ],
-      
+
         actions: data => {
             let actions = []
 
-            switch(data.dataConfig) {
-                case 'component' :
+            switch (data.dataConfig) {
+                case 'component':
                     actions.push(
                         {
                             type: 'add',
@@ -32,10 +32,15 @@ module.exports = function (plop) {
                             type: 'add',
                             path: 'components/{{ pascalCase elementName }}/{{ pascalCase elementName }}.styles.ts',
                             templateFile: 'generators/components/component.ts.hbs'
+                        },
+                        {
+                            type: 'add',
+                            path: 'components/{{ pascalCase elementName }}/{{ pascalCase elementName }}.spec.tsx',
+                            templateFile: 'generators/components/component.spec.hbs'
                         }
                     )
-                break;
-                case 'layout' :
+                    break;
+                case 'layout':
                     actions.push(
                         {
                             type: 'add',
@@ -58,7 +63,7 @@ module.exports = function (plop) {
                             templateFile: 'generators/layouts/layout.ts.hbs'
                         }
                     )
-                break;
+                    break;
             }
 
             return actions;

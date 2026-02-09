@@ -20,25 +20,25 @@ interface HeaderProps {
   }
 }
 
-const Header: FC<HeaderProps> = ({ content }) => {    
+const Header: FC<HeaderProps> = ({ content }) => {
   const pathname = usePathname();
   const pageName = formatPath(getMainPath(pathname))
 
   return (
     <Component>
-      {pathname === '/' ? 
+      {pathname === '/' ?
         <Link href={'/'}>
           <h1>{content.title}</h1>
-        </Link> : 
-        <Breadcrumb 
-          title={content.title} 
-          currentTitle={pageName} 
+        </Link> :
+        <Breadcrumb
+          homepageTitle={content.title}
+          currentTitle={pageName}
           currentPath={pathname}
         />
       }
       <Updates status={content.updates} />
     </Component>
-	);
+  );
 };
 
 export default Header;
