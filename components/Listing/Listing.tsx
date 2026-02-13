@@ -13,24 +13,28 @@ interface ListingProps {
   posts: PostProps[]
 }
 
-const Listing: FC<ListingProps> = ({ posts }) => {  
+const Listing: FC<ListingProps> = ({ posts }) => {
   return (
     <Component
       variants={parentVariants}
       initial="hidden"
       animate="visible"
     >
-      {posts ? 
+      {posts ?
         posts.map((post, index) =>
-          <motion.div key={index} variants={childrenVariants}>
+          <motion.div
+            key={index}
+            variants={childrenVariants}
+          >
             <Card
               info={post}
+              index={index}
             />
           </motion.div>
         )
-      : null}
+        : null}
     </Component>
-	);
+  );
 };
 
 export default Listing;

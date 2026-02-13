@@ -20,10 +20,14 @@ const Menu: FC<MenuProps> = ({ menu }) => {
 
   return (
     <Component>
-      <ul>
+      <ul className="menu" data-id="menu">
         {menu.map((item, index) =>
-          <li key={index} className={getMainPath(pathname) === item.url ? 'current' : ''}>
-            <Link className="icon" href={item.url}  aria-label={item.name}>
+          <li
+            key={index}
+            className={getMainPath(pathname) === item.url ? 'current' : ''}
+            data-id={`navigation-${index}`}
+          >
+            <Link className="icon" href={item.url} aria-label={item.name}>
               <div dangerouslySetInnerHTML={{ __html: item.icon }} />
               <span>{item.name}</span>
             </Link>
@@ -31,7 +35,7 @@ const Menu: FC<MenuProps> = ({ menu }) => {
         )}
       </ul>
     </Component>
-	);
+  );
 };
 
 export default Menu;
