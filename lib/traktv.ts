@@ -1,27 +1,24 @@
-export const getLastWatched = async (type: string) => {
-  const response = await fetch(`https://api.trakt.tv/users/micaelennn/history?type=${type}`, { 
-  headers: {
-      "Content-Type": "application/json",
-      "trakt-api-version": "2",
-      "trakt-api-key": `${process.env.TRAKT_CLIENT_ID}`
-    },
-  });
+export const getLastWatched = async (type: 'movies' | 'shows') => {
+  try {
+    const response = await fetch(`https://api.trakt.tv/users/micaelennn/history/${type}?limit=1`, {
+      headers: {
+        "Content-Type": "application/json",
+        "trakt-api-version": "2",
+        "trakt-api-key": `${process.env.TRAKT_CLIENT_ID}`,
+        "User-Agent": "web-application"
+      },
+    });
 
-  return response.json();
-}
+    const mediaJSON = await response.json()
 
-export const getMediaInformation = async (type: string) => {
-  const media = await getLastWatched(type)
-  const latestMovie = media[0].movie
-  const latestShow = media[0].show
+    const map = {
+      movies: 'movie',
+      shows: 'show',
+    };
 
-  if ( type === 'movies') {
-    return `${latestMovie.title}`
+    return mediaJSON?.[0]?.[map[type]]?.title ?? '';
   }
-
-  if ( type === 'shows' ) {
-    return `${latestShow.title}`
+  catch {
+    return ''
   }
-
-  return ''
 }
