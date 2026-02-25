@@ -16,11 +16,11 @@ interface HeadingProps {
   image: object;
 }
 
-const Heading: FC<HeadingProps> = ({title, description, createdAt, image}) => {
+const Heading: FC<HeadingProps> = ({ title, description, createdAt, image }) => {
   return (
     <Component>
-      <img 
-        src={getImageURL(image)} 
+      <img
+        src={getImageURL(image)}
         alt={title}
         height={92}
         width={120}
@@ -34,7 +34,7 @@ const Heading: FC<HeadingProps> = ({title, description, createdAt, image}) => {
         </time>
       </div>
     </Component>
-	);
+  );
 };
 
 export default Heading;

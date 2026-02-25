@@ -1,6 +1,10 @@
+import { replaceDots } from "@/utils/helpers/string";
+
 export const getLastWatched = async (type: 'movies' | 'shows') => {
+  const historyEndpoint = `https://api.trakt.tv/users/micaelennn/history/${type}?limit=1`
+
   try {
-    const response = await fetch(`https://api.trakt.tv/users/micaelennn/history/${type}?limit=1`, {
+    const response = await fetch(historyEndpoint, {
       headers: {
         "Content-Type": "application/json",
         "trakt-api-version": "2",
@@ -16,7 +20,8 @@ export const getLastWatched = async (type: 'movies' | 'shows') => {
       shows: 'show',
     };
 
-    return mediaJSON?.[0]?.[map[type]]?.title ?? '';
+    const mediaTitle = mediaJSON?.[0]?.[map[type]]?.title ?? ''
+    return replaceDots(mediaTitle)
   }
   catch {
     return ''

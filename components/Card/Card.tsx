@@ -43,7 +43,7 @@ const Card: FC<CardProps> = ({ info, index }) => {
         <span>{`Read More →`}</span>
       </Info>
 
-      <Link className={`teste`} href={`${info.slug}`}>
+      <Link href={`${info.slug}`}>
         {info.title}
       </Link>
     </Component>

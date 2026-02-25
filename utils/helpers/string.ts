@@ -6,7 +6,7 @@ export function formatDateToEnGB(date: string) {
     timeZone: 'UTC'
   })
 
-  return formattedDate
+  return formattedDate // 00 Mon 0000
 }
 
 export function getMainPath(pathname: string) {
@@ -16,4 +16,8 @@ export function getMainPath(pathname: string) {
 export function formatPath(pathname: string) {
   const path = pathname.replace(/^\//, "")
   return path.charAt(0).toUpperCase() + path.slice(1)
+}
+
+export function replaceDots(text: string) {
+  return text.replaceAll(':', ' -');
 }

@@ -12,7 +12,7 @@ interface UpdatesProps {
   status: StatusProps;
 }
 
-const Updates: FC<UpdatesProps> = ({ status }) => {  
+const Updates: FC<UpdatesProps> = ({ status }) => {
   const [visibleIndex, setVisibleIndex] = useState<number>(0)
 
   const statusItems: StatusItem[] = [

@@ -3,8 +3,6 @@ import Card from './Card';
 import { PostProps } from '@/utils/types/PostProps';
 
 function renderComponent() {
-  const topicsMock = ['RAG', 'LangChain']
-
   const postMock: PostProps = {
     title: 'Hello World',
     slug: 'hello-world',
