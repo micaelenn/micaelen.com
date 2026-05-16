@@ -9,14 +9,13 @@ import { usePathname } from "next/navigation";
 import { Component } from './Header.styles'
 import Updates from '@/components/Updates/Updates'
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
-import { StatusProps } from '@/utils/types/StatusProps'
 import { getMainPath, formatPath } from '@/utils/helpers/string'
 
 // types
 interface HeaderProps {
   content: {
     title: string;
-    updates: StatusProps;
+    updates: string[];
   }
 }
 
