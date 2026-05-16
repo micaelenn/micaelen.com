@@ -14,25 +14,20 @@ export const getGeneralData = async () => {
     }`
   )
 
-  // dynamic updates
   const updates = data.updates
   const listening = await getTrackInformation()
   const watchedMovie = await getLastWatched('movies')
   const watching = await getLastWatched('shows')
 
+  updates.unshift(listening)
+  updates.push(watchedMovie)
+  updates.push(watching)
+
   const content = {
     menu: data.menu,
     header: {
       title: data.title,
-      updates: {
-        listening: listening,
-        learning: updates.learning,
-        watching: watching,
-        location: updates.location,
-        watchedMovie: watchedMovie,
-        playing: updates.playing,
-        version: updates.version
-      },
+      updates: updates
     },
   }
 

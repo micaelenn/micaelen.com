@@ -13,15 +13,22 @@ export const getLastWatched = async (type: 'movies' | 'shows') => {
       },
     });
 
-    const mediaJSON = await response.json()
+    const mediaJSON = await response.json();
 
     const map = {
       movies: 'movie',
       shows: 'show',
     };
 
-    const mediaTitle = mediaJSON?.[0]?.[map[type]]?.title ?? ''
-    return replaceDots(mediaTitle)
+    const rawMediaTitle = mediaJSON?.[0]?.[map[type]]?.title ?? '';
+    const mediaTitle = replaceDots(rawMediaTitle);
+
+    const formattedMedia = {
+      shows: `📺 Watching: ${mediaTitle}`,
+      movies: `🎬 Last Movie: ${mediaTitle}`,
+    };
+
+    return formattedMedia[type] ?? mediaTitle;
   }
   catch {
     return ''

@@ -1,8 +1,8 @@
 interface Artist {
-    name: string;
+  name: string;
 }
 
 export interface TrackProps {
-    name: string;
-    artists: Artist[];
+  name: string;
+  artists: Artist[];
 }
