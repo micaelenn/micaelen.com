@@ -6,9 +6,10 @@ import Link from 'next/link'
 import { usePathname } from "next/navigation";
 
 // internal dependencies
-import { Component } from './Header.styles'
+import { Component, Center, ToggleWrapper } from './Header.styles'
 import Updates from '@/components/Updates/Updates'
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
+import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
 import { getMainPath, formatPath } from '@/utils/helpers/string'
 
 // types
@@ -25,17 +26,22 @@ const Header: FC<HeaderProps> = ({ content }) => {
 
   return (
     <Component>
-      {pathname === '/' ?
-        <Link href={'/'}>
-          <h1>{content.title}</h1>
-        </Link> :
-        <Breadcrumb
-          homepageTitle={content.title}
-          currentTitle={pageName}
-          currentPath={pathname}
-        />
-      }
-      <Updates status={content.updates} />
+      <Center>
+        {pathname === '/' ?
+          <Link href={'/'}>
+            <h1>{content.title}</h1>
+          </Link> :
+          <Breadcrumb
+            homepageTitle={content.title}
+            currentTitle={pageName}
+            currentPath={pathname}
+          />
+        }
+        <Updates status={content.updates} />
+      </Center>
+      <ToggleWrapper>
+        <ThemeToggle />
+      </ToggleWrapper>
     </Component>
   );
 };

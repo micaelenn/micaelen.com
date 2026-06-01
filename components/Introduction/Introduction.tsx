@@ -12,33 +12,34 @@ import { parentVariants, childrenVariants } from '@/styles/animations'
 // types
 interface IntroductionProps {
   content: IntroProps;
-} 
+}
 
-const Introduction: FC<IntroductionProps> = ({ content }) => {  
+const Introduction: FC<IntroductionProps> = ({ content }) => {
   return (
-      <Component>
-        <Content 
-          variants={parentVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div variants={childrenVariants}>
-            <PortableText
-              value={content.description}
+    <Component>
+      <Content
+        variants={parentVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={childrenVariants}>
+          <PortableText
+            value={content.description}
+          />
+        </motion.div>
+
+        <motion.div variants={childrenVariants}>
+          {content.stack ?
+            <PillList
+              className={`pilllist`}
+              title={`Skills & Technologies`}
+              items={content.stack}
             />
-          </motion.div>
-          
-          <motion.div variants={childrenVariants}>
-          {content.stack ? 
-            <PillList 
-              title={`Skills & Technologies`} 
-              items={content.stack} 
-            />
-          : null}
-          </motion.div>
-        </Content>
-      </Component>
-	)
+            : null}
+        </motion.div>
+      </Content>
+    </Component>
+  )
 }
 
 export default Introduction;

@@ -11,6 +11,7 @@ export const Component = styled.div`
   justify-content: center;
 
   a {
+    border-radius: 3px;
     color: ${colors.black};
     display: block;
     transform: translateY(0); 
@@ -34,7 +35,7 @@ export const Component = styled.div`
     .icon {
       background-color: ${colors.primary};
       display: flex;
-      padding: 2px;
+      padding: 3px;
 
       &:hover, 
       &:focus,

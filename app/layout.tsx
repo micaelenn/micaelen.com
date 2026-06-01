@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 // internal dependencies
 import GlobalStyles from '@/styles/globalStyles'
 import StyledComponentsRegistry from '@/lib/registry'
+import { ThemeProvider } from '@/context/ThemeContext'
 
 // font-families
 import '@fontsource/courier-prime/400.css';
@@ -36,10 +37,12 @@ export default async function RootLayout({
       <html lang="en">
         <body>
         <StyledComponentsRegistry>
-          <GlobalStyles />
+          <ThemeProvider>
+            <GlobalStyles />
             <Header content={headerData} />
             {children}
             <Menu menu={menuData} />
+          </ThemeProvider>
           </StyledComponentsRegistry>
         </body>
       </html>

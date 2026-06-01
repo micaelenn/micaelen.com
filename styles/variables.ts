@@ -1,12 +1,12 @@
 const colors = {
-  black: '#000',
-  dark: '#363c41',
-  white: '#FFF',
-  alabaster: '#FAFAFA',
-  gray: '#4b5563',
-  primary: '#B8DBD9',
-  light: '#FCf4E9',
-  border: '#e5e7eb',
+  black: 'var(--color-black)',
+  dark: 'var(--color-dark)',
+  white: 'var(--color-white)',
+  alabaster: 'var(--color-alabaster)',
+  gray: 'var(--color-gray)',
+  primary: 'var(--color-primary)',
+  light: 'var(--color-light)',
+  border: 'var(--color-border)',
 }
 
 const fontFamilies = {

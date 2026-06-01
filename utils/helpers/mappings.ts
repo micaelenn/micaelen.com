@@ -6,5 +6,5 @@ export function formatTrackInfo(info: TrackProps) {
     artist: info.artists[0].name
   }
 
-  return `🎶 Listening: ${track.name} - ${track.artist}`
+  return `🎶 ${track.name} - ${track.artist}`
 }

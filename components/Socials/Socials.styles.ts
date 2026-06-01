@@ -15,7 +15,7 @@ export const Component = styled(motion.div)`
 
   a {  
     svg {
-      color: ${colors.dark};
+      color: ${colors.black};
       height: 22px;
       width: 22px;
     }

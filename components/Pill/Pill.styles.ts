@@ -4,6 +4,7 @@ import { colors, fontFamilies, medias } from '@/styles/variables'
 export const Component = styled.span`
   font-family: ${fontFamilies.secondary};
   border: 1px solid ${colors.dark};
+  border-radius: 3px;
   font-size: 15px;
   height: 25px;
   display: block;

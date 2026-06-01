@@ -13,6 +13,7 @@ export const Component = styled.div`
   }
 
   img {
+    border-radius: 5px;
     filter: grayscale(100%);
     object-fit: cover;
     width: 120px;

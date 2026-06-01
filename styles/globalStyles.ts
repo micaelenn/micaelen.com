@@ -4,6 +4,28 @@ import { createGlobalStyle } from 'styled-components'
 import { colors, fontFamilies, medias } from './variables'
 
 const GlobalStyles = createGlobalStyle`
+  :root {
+    --color-black: #000;
+    --color-dark: #363c41;
+    --color-white: #FFF;
+    --color-alabaster: #FAFAFA;
+    --color-gray: #4b5563;
+    --color-primary: #B8DBD9;
+    --color-light: #FCf4E9;
+    --color-border: #e5e7eb;
+  }
+
+  [data-theme='dark'] {
+    --color-black: #e8e6e3;
+    --color-dark: #b0b7bc;
+    --color-white: #fafafa;
+    --color-alabaster: #0f172a;
+    --color-gray: #9ca3af;
+    --color-primary: #4a9e9b;
+    --color-light: #2a2218;
+    --color-border: #e5e7eb;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -44,9 +66,11 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     background-color: ${colors.alabaster};
+    color: ${colors.black};
     font-family: ${fontFamilies.primary}, sans-serif;
     margin: 0 auto;
     max-width: 1500px;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   main,
