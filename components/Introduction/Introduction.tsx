@@ -8,6 +8,7 @@ import { Component, Content } from './Introduction.styles'
 import PillList from '@/components/PillList/PillList'
 import { IntroProps } from '@/utils/types/IntroProps'
 import { parentVariants, childrenVariants } from '@/styles/animations'
+import { TerminalWindowIcon } from '@phosphor-icons/react';
 
 // types
 interface IntroductionProps {
@@ -23,6 +24,8 @@ const Introduction: FC<IntroductionProps> = ({ content }) => {
         animate="visible"
       >
         <motion.div variants={childrenVariants}>
+          <TerminalWindowIcon size={32} />
+
           <PortableText
             value={content.description}
           />

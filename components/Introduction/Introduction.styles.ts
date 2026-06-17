@@ -7,6 +7,7 @@ export const Component = styled.section``
 export const Content = styled(motion.div)`
   p {
     color: ${colors.black};
-    margin: 20px 0;
+    margin: 10px 0;
+    font-size: 20px;
   }
 `
