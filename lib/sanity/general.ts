@@ -19,9 +19,9 @@ export const getGeneralData = async () => {
   const watchedMovie = await getLastWatched('movies')
   const watching = await getLastWatched('shows')
 
-  updates.unshift(listening)
-  updates.push(watchedMovie)
-  updates.push(watching)
+  if (listening) updates.unshift(listening)
+  if (watchedMovie) updates.push(watchedMovie)
+  if (watching) updates.push(watching)
 
   const content = {
     menu: data.menu,

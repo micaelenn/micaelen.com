@@ -43,18 +43,25 @@ const getLatestTopTrack = async () => {
 };
 
 export const getTrackInformation = async () => {
-  const currentlyPlaying = await getCurrentlyPlaying();
-  const isTrackPlaying = currentlyPlaying.status === 200;
-  
-  let trackInfo
+  try {
+    const currentlyPlaying = await getCurrentlyPlaying();
+    const isTrackPlaying = currentlyPlaying.status === 200;
 
-  if( isTrackPlaying ) {
-    trackInfo = currentlyPlaying.data.item
+    let trackInfo
+
+    if( isTrackPlaying ) {
+      trackInfo = currentlyPlaying.data?.item
+    }
+    else {
+      const latestTopTrack = await getLatestTopTrack();
+      trackInfo = latestTopTrack.data?.items?.[0]
+    }
+
+    if (!trackInfo) return ''
+
+    return formatTrackInfo(trackInfo)
   }
-  else {
-    const latestTopTrack = await getLatestTopTrack();
-    trackInfo = latestTopTrack.data.items[0]
+  catch {
+    return ''
   }
-  
-  return formatTrackInfo(trackInfo)
 };
